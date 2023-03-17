@@ -35,45 +35,28 @@ import lombok.NoArgsConstructor;
 //  ]
 // }
 
-
+@Data
+@NoArgsConstructor
 public class Restaurant {
     
-    @JsonProperty("restaurantId")
-    String restaurantId;
-    @JsonProperty("name")
-    String name;
-    @JsonProperty("city")
-    String city;
-    @JsonProperty("imageUrl")
-    String imageUrl;
-    @JsonProperty("latitude")
-    double latitude;
-    @JsonProperty("longitude")
-    double longitude;
-    @JsonProperty("opensAt")
-    String opensAt;
-    @JsonProperty("closesAt")
-    String closesAt;
-    @JsonProperty("attributes")
-    String[] attributes;
-    
-    
-    // public Restaurant() {}
-
-    // public Restaurant(String restaurantId, String name, String city, String imageUrl,
-    //         double latitude, double longitude, String opensAt, String closesAt,
-    //         String[] attributes) {
-    //     this.restaurantId = restaurantId;
-    //     this.name = name;
-    //     this.city = city;
-    //     this.imageUrl = imageUrl;
-    //     this.latitude = latitude;
-    //     this.longitude = longitude;
-    //     this.opensAt = opensAt;
-    //     this.closesAt = closesAt;
-    //     this.attributes = attributes;
-    // }
-
+  @JsonProperty("restaurantId")
+    private String restaurantId;
+  @JsonProperty("name")
+    private String name;
+  @JsonProperty("city")
+    private String city;
+  @JsonProperty("imageUrl")
+   private String imageUrl;
+  @JsonProperty("latitude")
+    private double latitude;
+  @JsonProperty("longitude")
+    private double longitude;
+  @JsonProperty("opensAt")
+   private String opensAt;
+  @JsonProperty("closesAt")
+   private String closesAt;
+  @JsonProperty("attributes")
+   private String[] attributes;
     
     
 }
