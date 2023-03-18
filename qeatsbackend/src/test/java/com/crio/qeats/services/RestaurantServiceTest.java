@@ -7,7 +7,6 @@
 
 package com.crio.qeats.services;
 
-import lombok.extern.log4j.Log4j2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.ArgumentMatchers.any;
@@ -51,7 +50,6 @@ import org.springframework.test.context.ActiveProfiles;
 @MockitoSettings(strictness = Strictness.STRICT_STUBS)
 @DirtiesContext
 @ActiveProfiles("test")
-@Log4j2
 class RestaurantServiceTest {
 
   private static final String FIXTURES = "fixtures/exchanges";
