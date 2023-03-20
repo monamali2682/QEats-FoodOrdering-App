@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
@@ -89,9 +90,11 @@ class RestaurantServiceTest {
   // }
 
   @Test
+  @DisplayName("Given time within peak hours serving radius of 3km should be used")
   void peakHourServingRadiusOf3KmsAt7Pm() throws IOException {
     List<Restaurant> restaurants = loadRestaurantsDuringPeakHours();
     //arrange
+  
     when(restaurantRepositoryServiceMock
         .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
             any(Double.class)))
@@ -104,6 +107,7 @@ class RestaurantServiceTest {
         .findAllRestaurantsCloseBy(new GetRestaurantsRequest(latitude,longitude),
         LocalTime.of(19, 0)); //LocalTime.of(19,00));
       // assert
+
     assertEquals(2, allRestaurantsCloseBy.getRestaurants().size());
     assertEquals("11", allRestaurantsCloseBy.getRestaurants().get(0).getRestaurantId());
     assertEquals("12", allRestaurantsCloseBy.getRestaurants().get(1).getRestaurantId());
@@ -113,10 +117,15 @@ class RestaurantServiceTest {
         .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
             servingRadiusInKms.capture());
     assertEquals(servingRadiusInKms.getValue().toString(), "3.0");
+
+    
   }
+
+  
 
 
   @Test
+  @DisplayName("Given time within normal hours serving radius of 5km should be used")
   void normalHourServingRadiusIs5Kms() throws IOException {
 
     // TODO: CRIO_TASK_MODULE_RESTAURANTSAPI
@@ -149,6 +158,8 @@ class RestaurantServiceTest {
     .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
     servingRadius.capture());
     assertEquals( servingRadius.getValue().toString(),"5.0");
+
+
   }
 
 
@@ -157,6 +168,7 @@ class RestaurantServiceTest {
   private List<Restaurant> loadRestaurantsDuringNormalHours() throws IOException {
     String fixture =
         FixtureHelpers.fixture(FIXTURES + "/normal_hours_list_of_restaurant.json");
+        // FixtureHelpers.fixture(FIXTURES + "/normal_hours_list_of_restaurants.json");
 
     return objectMapper.readValue(fixture, new TypeReference<List<Restaurant>>() {
     });
