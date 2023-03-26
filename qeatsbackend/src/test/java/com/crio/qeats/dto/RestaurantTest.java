@@ -43,7 +43,6 @@ class RestaurantTest {
     String actualJsonString = "";
     actualJsonString = new ObjectMapper().writeValueAsString(restaurant);
     System.out.println(actualJsonString);
-    
 
     JSONAssert.assertEquals(jsonString, actualJsonString, true);
   }

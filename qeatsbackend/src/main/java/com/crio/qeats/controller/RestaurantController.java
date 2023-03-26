@@ -48,7 +48,7 @@ public class RestaurantController {
   public ResponseEntity<GetRestaurantsResponse> getRestaurants(
        @Valid GetRestaurantsRequest getRestaurantsRequest) {
 
-      log.info("getRestaurants called with {}", getRestaurantsRequest);
+      //log.info("getRestaurants called with {}", getRestaurantsRequest);
       GetRestaurantsResponse getRestaurantsResponse;
       //CHECKSTYLE:OFF
      
@@ -57,7 +57,7 @@ public class RestaurantController {
       && getRestaurantsRequest.getLongitude() >= -180 && getRestaurantsRequest.getLongitude() <= 180) {
           getRestaurantsResponse = restaurantService
           .findAllRestaurantsCloseBy(getRestaurantsRequest, LocalTime.now());
-          log.info("getRestaurants returned {}", getRestaurantsResponse);
+          //log.info("getRestaurants returned {}", getRestaurantsResponse);
           return ResponseEntity.ok().body(getRestaurantsResponse);
       }
       else{

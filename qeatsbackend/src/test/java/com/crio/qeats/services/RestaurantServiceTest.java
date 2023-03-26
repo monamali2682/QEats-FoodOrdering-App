@@ -67,34 +67,34 @@ class RestaurantServiceTest {
     objectMapper = new ObjectMapper();
   }
 
-  // private String getServingRadius(List<Restaurant> restaurants, LocalTime timeOfService) {
-  //   when(restaurantRepositoryServiceMock
-  //       .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
-  //           any(Double.class)))
-  //       .thenReturn(restaurants);
+  private String getServingRadius(List<Restaurant> restaurants, LocalTime timeOfService) {
+    when(restaurantRepositoryServiceMock
+        .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
+            any(Double.class)))
+        .thenReturn(restaurants);
 
-  //   GetRestaurantsResponse allRestaurantsCloseBy = restaurantService
-  //       .findAllRestaurantsCloseBy(new GetRestaurantsRequest(20.0,30.0),
-  //           timeOfService); //LocalTime.of(19,00));
+    GetRestaurantsResponse allRestaurantsCloseBy = restaurantService
+        .findAllRestaurantsCloseBy(new GetRestaurantsRequest(20.0,30.0),
+            timeOfService); //LocalTime.of(19,00));
 
-  //   assertEquals(2, allRestaurantsCloseBy.getRestaurants().size());
-  //   assertEquals("11", allRestaurantsCloseBy.getRestaurants().get(0).getRestaurantId());
-  //   assertEquals("12", allRestaurantsCloseBy.getRestaurants().get(1).getRestaurantId());
+    assertEquals(2, allRestaurantsCloseBy.getRestaurants().size());
+    assertEquals("11", allRestaurantsCloseBy.getRestaurants().get(0).getRestaurantId());
+    assertEquals("12", allRestaurantsCloseBy.getRestaurants().get(1).getRestaurantId());
 
-  //   ArgumentCaptor<Double> servingRadiusInKms = ArgumentCaptor.forClass(Double.class);
-  //   verify(restaurantRepositoryServiceMock, times(1))
-  //       .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
-  //           servingRadiusInKms.capture());
+    ArgumentCaptor<Double> servingRadiusInKms = ArgumentCaptor.forClass(Double.class);
+    verify(restaurantRepositoryServiceMock, times(1))
+        .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
+            servingRadiusInKms.capture());
 
-  //   return servingRadiusInKms.getValue().toString();
-  // }
+    return servingRadiusInKms.getValue().toString();
+  }
+
 
   @Test
   @DisplayName("Given time within peak hours serving radius of 3km should be used")
   void peakHourServingRadiusOf3KmsAt7Pm() throws IOException {
     List<Restaurant> restaurants = loadRestaurantsDuringPeakHours();
     //arrange
-  
     when(restaurantRepositoryServiceMock
         .findAllRestaurantsCloseBy(any(Double.class), any(Double.class), any(LocalTime.class),
             any(Double.class)))
@@ -107,7 +107,6 @@ class RestaurantServiceTest {
         .findAllRestaurantsCloseBy(new GetRestaurantsRequest(latitude,longitude),
         LocalTime.of(19, 0)); //LocalTime.of(19,00));
       // assert
-
     assertEquals(2, allRestaurantsCloseBy.getRestaurants().size());
     assertEquals("11", allRestaurantsCloseBy.getRestaurants().get(0).getRestaurantId());
     assertEquals("12", allRestaurantsCloseBy.getRestaurants().get(1).getRestaurantId());
@@ -149,6 +148,7 @@ class RestaurantServiceTest {
     LocalTime.of(22, 0));
     //System.out.println(response.getRestaurants().get(0));
     //log.info(response);
+    // assert
     assertEquals(3, allRestaurantsCloseBy.getRestaurants().size());
     assertEquals("10", allRestaurantsCloseBy.getRestaurants().get(0).getRestaurantId());
     assertEquals("11", allRestaurantsCloseBy.getRestaurants().get(1).getRestaurantId());
@@ -159,8 +159,9 @@ class RestaurantServiceTest {
     servingRadius.capture());
     assertEquals( servingRadius.getValue().toString(),"5.0");
 
-
+    
   }
+
 
 
 

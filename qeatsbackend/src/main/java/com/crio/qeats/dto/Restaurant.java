@@ -8,6 +8,7 @@
 package com.crio.qeats.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,10 +33,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Restaurant {
 
-  @JsonIgnore
-    private String id;
+      @JsonIgnore
+      private String id;
     
       @JsonProperty("restaurantId")
         private String restaurantId;
@@ -63,6 +65,16 @@ public class Restaurant {
       
       @JsonProperty("attributes")
       private String[] attributes;
+
+    public Object getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(String restaurantId) {
+      this.restaurantId = restaurantId;
+    }
+
+    
      
 }
 

@@ -54,7 +54,7 @@ public class RestaurantServiceImpl implements RestaurantService {
           restaurants= restaurantRepositoryService.findAllRestaurantsCloseBy(getRestaurantsRequest.getLatitude(), getRestaurantsRequest.getLongitude(), currentTime, normalHoursServingRadiusInKms);
         }
         GetRestaurantsResponse response=  new GetRestaurantsResponse(restaurants);
-        log.info(response);
+        //log.info(response);
         return response;
   }
 

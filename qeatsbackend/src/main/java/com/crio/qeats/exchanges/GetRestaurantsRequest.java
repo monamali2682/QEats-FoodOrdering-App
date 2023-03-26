@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 public class GetRestaurantsRequest {
 
-    
+    public GetRestaurantsRequest() {}
 
     public GetRestaurantsRequest(Double latitude, Double longitude) {
         this.latitude=latitude;
@@ -45,6 +45,30 @@ public class GetRestaurantsRequest {
     private Double longitude;
 
     private String searchFor;
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getSearchFor() {
+        return searchFor;
+    }
+
+    public void setSearchFor(String searchFor) {
+        this.searchFor = searchFor;
+    }
 
 }
 

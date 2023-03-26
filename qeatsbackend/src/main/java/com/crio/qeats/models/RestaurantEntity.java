@@ -50,5 +50,29 @@ public class RestaurantEntity {
   @NotNull
   private List<String> attributes = new ArrayList<>();
 
+public String getOpensAt() {
+    return opensAt;
+}
+
+public String getClosesAt() {
+    return closesAt;
+}
+
+public double getLatitude() {
+    return latitude;
+}
+
+public double getLongitude() {
+    return longitude;
+}
+
+public String getRestaurantId() {
+    return restaurantId;
+}
+
+public void setRestaurantId(String restaurantId) {
+    this.restaurantId = restaurantId;
+}
+
 }
 
