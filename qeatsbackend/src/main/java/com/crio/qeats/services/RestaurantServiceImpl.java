@@ -34,9 +34,6 @@ public class RestaurantServiceImpl implements RestaurantService {
   @Autowired
   private RestaurantRepositoryService restaurantRepositoryService;
 
-
-  // TODO: CRIO_TASK_MODULE_RESTAURANTSAPI - Implement findAllRestaurantsCloseby.
-  // Check RestaurantService.java file for the interface contract.
   
   @Override
   public GetRestaurantsResponse findAllRestaurantsCloseBy(
