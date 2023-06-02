@@ -13,7 +13,7 @@ import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-//CRIO_TASK_MODULE_SERIALIZATION - Pass tests in RestaurantTest.
+
 class RestaurantTest {
 
   @Test
